@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'author'];
+    protected $fillable = ['title', 'content', 'author_id'];
     public function author()
     {
         return $this->belongsTo(Author::class);

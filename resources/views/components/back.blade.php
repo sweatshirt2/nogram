@@ -1,8 +1,8 @@
 @php
-$path = explode('/', request()->path());
+    $path = request()->path();
+    $paths = explode('/', $path);
 @endphp
-@if(count($path) === 2)
 
-<a href="{{ '/'.$path[0] }}" class='text-blue-800 text-xs'>back to list</a>
-
+@if (count($paths) > 1 && $path !== '/')
+    <a href="{{ '/' . $paths[0] }}" class='text-blue-800 text-xs'><- &nbsp; back to list</a>
 @endif
