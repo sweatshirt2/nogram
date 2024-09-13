@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     use HasFactory;
-    protected $guard = [];
+    protected $guarded = [];
     public function posts()
     {
         return $this->hasMany(Post::class);

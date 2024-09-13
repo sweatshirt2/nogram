@@ -26,7 +26,7 @@
                         </div>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <x-nav current='/' aria-current="page">Home</x-nav>
+                                <x-nav current='' aria-current="page">Home</x-nav>
                                 <x-nav current='posts'>Posts</x-nav>
                                 <x-nav current='people'>People</x-nav>
                             </div>

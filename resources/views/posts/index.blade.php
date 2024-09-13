@@ -11,10 +11,10 @@
         <div class="grid grid-cols-3 gap-5 mb-12">
             @foreach ($posts as $post)
                 <div class="bg-slate-300 p-5">
-                    <a href='posts/{{ $post['id'] }}' class='text-blue-800 text-xl p-lg-'>
-                        {{ $post['title'] }}
+                    <a href='posts/{{ $post->id }}' class='text-blue-800 text-xl'>
+                        {{ $post->title }}
                     </a><br>
-                    <span class="text-sm font-light">{{ $post['author']->name }}</span>
+                    <span class="text-sm font-light">{{ $post->author->name }}</span>
                 </div>
             @endforeach
         </div>
