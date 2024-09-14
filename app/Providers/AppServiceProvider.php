@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Model::preventLazyLoading();
+        Model::preventLazyLoading();
         // LaravelPaginator::useBootstrap();
 
         // commented out because gate was replaced with policy

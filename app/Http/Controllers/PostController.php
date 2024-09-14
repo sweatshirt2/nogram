@@ -50,6 +50,7 @@ class PostController extends Controller
     }
     public function show(Post $post): View
     {
+        $post->load('comments.author', 'author');
         return view('posts.show', compact('post'));
     }
     public function edit(Post $post): RedirectResponse|View
