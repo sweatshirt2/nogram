@@ -24,12 +24,24 @@
                             <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                                 alt="Your Company">
                         </div>
-                        <div class="hidden md:block">
+                        <div class="flex justify-between w-full px-10">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <x-nav current='' aria-current="page">Home</x-nav>
                                 <x-nav current='posts'>Posts</x-nav>
                                 <x-nav current='people'>People</x-nav>
                             </div>
+                            @auth
+                                <form action="/logout" method="POST">
+                                    @csrf
+
+                                    <button
+                                        class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                                        type="submit">Log Out</button>
+                                </form>
+                            @endauth
+                            @guest
+                                <x-nav current='login'>Log In</x-nav>
+                            @endguest
                         </div>
                     </div>
                     <div class="hidden md:block">
@@ -55,4 +67,11 @@
             </div>
         </main>
     </div>
+    @session('registration-success')
+        <script>
+            setTimeout(() => {
+                alert("Successfully registered in");
+            }, 10);
+        </script>
+    @endsession
 </body>

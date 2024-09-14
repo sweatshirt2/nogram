@@ -14,7 +14,7 @@
                     <a href='posts/{{ $post->id }}' class='text-blue-800 text-xl'>
                         {{ $post->title }}
                     </a><br>
-                    <span class="text-sm font-light">{{ $post->author->name }}</span>
+                    <span class="text-sm font-light">{{ $post->author->user->firstName }}</span>
                 </div>
             @endforeach
         </div>
