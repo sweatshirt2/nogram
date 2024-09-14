@@ -9,14 +9,9 @@ use App\Http\Controllers\SessionController;
 use App\Mail\NewPost;
 use Faker\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-Route::get("/mail", function () {
-    $mail = new NewPost();
-    Mail::to("bekur@nogram.com")->send($mail);
-
-    return view("mail.new-post");
-});
 Route::view('/', 'welcome');
 
 // Route::controller(PostController::class)->group(['posts'], function () {

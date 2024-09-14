@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\EmailJob;
 use App\Mail\NewPost;
 use App\Models\Author;
 use App\Models\Post;
@@ -44,7 +45,7 @@ class PostController extends Controller
             'author_id'=> $author->id,
         ]);
 
-        Mail::to($user)->send(new NewPost(Author::where('user_id', Auth::user()->id)->first(),$post));
+        EmailJob::dispatch($user, $post);
 
         return redirect('/posts');
     }
