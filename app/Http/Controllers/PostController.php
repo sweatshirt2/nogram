@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewPost;
 use App\Models\Author;
 use App\Models\Post;
 use App\Models\User;
@@ -10,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -31,15 +33,18 @@ class PostController extends Controller
         'title'=> 'required|unique:posts,title|max:30',
         'content'=> 'required',
         ];
-        request()->validate($rules);
+        $request->validate($rules);
 
-        $authors = Author::all();
-        $index = random_int(0, count($authors) - 1);
-        Post::create([
+        $user = Auth::user();
+        $author = Author::where('user_id', $user->id)->first();
+
+        $post = Post::create([
             'title'=> request('title'),
             'content'=> request('content'),
-            'author_id'=> $authors[$index]['id'],
+            'author_id'=> $author->id,
         ]);
+
+        Mail::to($user)->send(new NewPost(Author::where('user_id', Auth::user()->id)->first(),$post));
 
         return redirect('/posts');
     }

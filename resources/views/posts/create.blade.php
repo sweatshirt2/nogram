@@ -12,7 +12,7 @@
                         <div class="mt-2">
                             <input type="text" name="title" id="title" autocomplete="title"
                                 class="block flex-1 border-0 bg-transparent p-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                placeholder="The knight at the dawn" required>
+                                placeholder="The knight at the dawn" required value="{{ old('title') }}">
                         </div>
                         @error('title')
                             <p class="text-xs text-red-600 underline underline-offset-2 mt-2">{{ $message }}</p>
@@ -26,7 +26,7 @@
                     <div class="mt-2">
                         <textarea id="content" name="content" rows="3"
                             class="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            required></textarea>
+                            required>{{ old('content') }}</textarea>
                     </div>
                     @error('content')
                         <p class="text-xs text-red-600 underline underline-offset-2 mt-2">{{ $message }}</p>

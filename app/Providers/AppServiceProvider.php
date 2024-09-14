@@ -32,6 +32,6 @@ class AppServiceProvider extends ServiceProvider
         // commented out because gate was replaced with policy
         // Gate::define('edit-post', function (User $user, Post $post) {
         //     return $post->author->user->is($user);
-        // });
+        // });ss
     }
 }
